@@ -1,49 +1,5 @@
 
-
-- [📔 Day 5](#-day-5)
-	- [Arrays](#arrays)
-		- [How to create an empty array](#how-to-create-an-empty-array)
-		- [How to create an array with values](#how-to-create-an-array-with-values)
-		- [Creating an array using split](#creating-an-array-using-split)
-		- [Accessing array items using index](#accessing-array-items-using-index)
-		- [Modifying array element](#modifying-array-element)
-		- [Methods to manipulate array](#methods-to-manipulate-array)
-			- [Array Constructor](#array-constructor)
-			- [Creating static values with fill](#creating-static-values-with-fill)
-			- [Concatenating array using concat](#concatenating-array-using-concat)
-			- [Getting array length](#getting-array-length)
-			- [Getting index an element in arr array](#getting-index-an-element-in-arr-array)
-			- [Getting last index of an element in array](#getting-last-index-of-an-element-in-array)
-			- [Checking array](#checking-array)
-			- [Converting array to string](#converting-array-to-string)
-			- [Joining array elements](#joining-array-elements)
-			- [Slice array elements](#slice-array-elements)
-			- [Splice method in array](#splice-method-in-array)
-			- [Adding item to an array using push](#adding-item-to-an-array-using-push)
-			- [Removing the end element using pop](#removing-the-end-element-using-pop)
-			- [Removing an element from the beginning](#removing-an-element-from-the-beginning)
-			- [Add an element from the beginning](#add-an-element-from-the-beginning)
-			- [Reversing array order](#reversing-array-order)
-			- [Sorting elements in array](#sorting-elements-in-array)
-		- [Array of arrays](#array-of-arrays)
-	- [💻 Exercise](#-exercise)
-		- [Exercise: Level 1](#exercise-level-1)
-		- [Exercise: Level 2](#exercise-level-2)
-		- [Exercise: Level 3](#exercise-level-3)
-
-# 📔 Day 5
-
-## Arrays
-
-In contrast to variables, an array can store _multiple values_. Each value in an array has an _index_, and each index has _a reference in a memory address_. Each value can be accessed by using their _indexes_. The index of an array starts from _zero_, and the  index of the last element is less by one from the length of the array.
-
-An array is a collection of different data types which are ordered and changeable(modifiable). An array allows storing duplicate elements and different data types. An array can be empty, or it may have different data type values.
-
 ### How to create an empty array
-
-In JavaScript, we can create an array in different ways. Let us see different ways to create an array.
-It is very common to use _const_ instead of _let_ to declare an array variable. If you ar using const it means you do not use that variable name again.
-
 - Using Array constructor
 
 ```js
@@ -68,46 +24,18 @@ console.log(arr)
 Array with initial values. We use _length_ property to find the length of an array.
 
 ```js
-const numbers = [0, 3.14, 9.81, 37, 98.6, 100] // array of numbers
-const fruits = ['banana', 'orange', 'mango', 'lemon'] // array of strings, fruits
-const vegetables = ['Tomato', 'Potato', 'Cabbage', 'Onion', 'Carrot'] // array of strings, vegetables
-const animalProducts = ['milk', 'meat', 'butter', 'yoghurt'] // array of strings, products
-const webTechs = ['HTML', 'CSS', 'JS', 'React', 'Redux', 'Node', 'MongDB'] // array of web technologies
-const countries = ['Finland', 'Denmark', 'Sweden', 'Norway', 'Iceland'] // array of strings, countries
+const numbers = [0, 3.14] // array of numbers
+const countries = ['Finland', 'Denmark'] // array of strings, countries
 
 // Print the array and its length
 
-console.log('Numbers:', numbers)
 console.log('Number of numbers:', numbers.length)
 
-console.log('Fruits:', fruits)
-console.log('Number of fruits:', fruits.length)
-
-console.log('Vegetables:', vegetables)
-console.log('Number of vegetables:', vegetables.length)
-
-console.log('Animal products:', animalProducts)
-console.log('Number of animal products:', animalProducts.length)
-
-console.log('Web technologies:', webTechs)
-console.log('Number of web technologies:', webTechs.length)
-
-console.log('Countries:', countries)
 console.log('Number of countries:', countries.length)
 ```
 
 ```sh
-Numbers: [0, 3.14, 9.81, 37, 98.6, 100]
 Number of numbers: 6
-Fruits: ['banana', 'orange', 'mango', 'lemon']
-Number of fruits: 4
-Vegetables: ['Tomato', 'Potato', 'Cabbage', 'Onion', 'Carrot']
-Number of vegetables: 5
-Animal products: ['milk', 'meat', 'butter', 'yoghurt']
-Number of animal products: 4
-Web technologies: ['HTML', 'CSS', 'JS', 'React', 'Redux', 'Node', 'MongDB']
-Number of web technologies: 7
-Countries: ['Finland', 'Estonia', 'Denmark', 'Sweden', 'Norway']
 Number of countries: 5
 ```
 
