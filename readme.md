@@ -382,3 +382,162 @@ console.log(arrayOfArray[0]) // [1, 2, 3]
  console.log(fullStack[0])  // ["HTML", "CSS", "JS", "React", "Redux"]
  console.log(fullStack[1]) // ["Node", "Express", "MongoDB"]
 ```
+
+
+
+<!------------------------------Loop------------------------------->
+
+- [📔 Day 2](#-day-2)
+	- [Loops](#loops)
+		- [for Loop](#for-loop)
+		- [while loop](#while-loop)
+		- [do while loop](#do-while-loop)
+		- [for of loop](#for-of-loop)
+		- [break](#break)
+		- [continue](#continue)
+
+
+# 📔 Day 2
+
+## Loops
+
+### for Loop
+
+```js
+// For loop structure
+for(initialization, condition, increment/decrement){
+  // code goes here
+}
+```
+
+```js
+for(let i = 0; i <= 5; i++){
+  console.log(i)
+}
+
+// 0 1 2 3 4 5
+
+```
+
+```js
+const countries = ['Finland', 'Sweden', 'Denmark', 'Norway', 'Iceland']
+const newArr = []
+for(let i = 0; i < countries.length; i++){
+  newArr.push(countries[i].toUpperCase())
+}
+
+// ["FINLAND", "SWEDEN", "DENMARK", "NORWAY", "ICELAND"]
+```
+
+Adding all elements in the array
+
+```js
+const numbers = [1, 2, 3, 4, 5]
+let sum = 0
+for(let i = 0; i < numbers.length; i++){
+  sum  = sum + numbers[i]  // can be shorten, sum += numbers[i]
+
+}
+
+console.log(sum)  // 15
+```
+
+Creating a new array based on the existing array
+
+```js
+const numbers = [1, 2, 3, 4, 5]
+const newArr = []
+let sum = 0
+for(let i = 0; i < numbers.length; i++){
+  newArr.push( numbers[i] ** 2)
+
+}
+console.log(newArr)  // [1, 4, 9, 16, 25]
+```
+
+### while loop
+
+```js
+let i = 0
+while (i <= 5) {
+  console.log(i)
+  i++
+}
+
+// 0 1 2 3 4 5
+```
+
+### do while loop
+
+```js
+let i = 0
+do {
+  console.log(i)
+  i++
+} while (i <= 5)
+
+// 0 1 2 3 4 5
+```
+
+### for of loop
+
+We use for of loop for arrays. It is very hand way to iterate through an array if we are not interested in the index of each element in the array.
+
+```js
+for (const element of arr) {
+  // code goes here
+}
+```
+
+```js
+
+const numbers = [1, 2, 3, 4, 5]
+
+for (const num of numbers) {
+  console.log(num)
+}
+
+// 1 2 3 4 5
+
+// adding all the numbers in the array
+let sum = 0
+for (const num of numbers) {
+  sum = sum + num  
+	// can be also shorten like this, sum += num
+  // after this we will use the shorter synthax(+=, -=, *=, /= etc)
+}
+console.log(sum) // 15
+
+```
+
+### break
+
+Break is used to interrupt a loop.
+
+```js
+for(let i = 0; i <= 5; i++){
+  if(i == 3){
+    break
+  }
+  console.log(i)
+}
+
+// 0 1 2
+```
+
+The above code stops if 3 found in the iteration process.
+
+### continue
+
+We use the keyword *continue* to skip a certain iterations. 
+
+```js
+for(let i = 0; i <= 5; i++){
+  if(i == 3){
+    continue
+  }
+  console.log(i)
+}
+
+// 0 1 2 4 5
+```
