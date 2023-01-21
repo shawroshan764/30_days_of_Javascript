@@ -1824,3 +1824,1474 @@ users.sort((a, b) => {
 console.log(users) // sorted ascending
 // [{…}, {…}, {…}, {…}]
 ```
+
+
+
+
+<div align="center">
+  <h1>Sets and Maps</h1>
+
+</div>
+
+
+- [Day 6](#day-6)
+
+# Day 6
+
+## Set
+
+Set is  a collection of elements. Set can only contains unique elements.
+Let us see how to create a set in the section below.
+
+### Creating an empty set
+
+```js
+const companies = new Set()
+console.log(companies)
+```
+
+```sh
+Set(0) {}
+```
+
+### Creating set from array
+
+```js
+const languages = [
+  'English',
+  'Finnish',
+  'English',
+  'French',
+  'Spanish',
+  'English',
+  'French',
+]
+
+const setOfLanguages = new Set(languages)
+console.log(setOfLanguages)
+```
+
+```sh
+Set(4) {"English", "Finnish", "French", "Spanish"}
+```
+
+Set is an iterable object and we can iterate through each elements.
+
+```js
+const languages = [
+  'English',
+  'Finnish',
+  'English',
+  'French',
+  'Spanish',
+  'English',
+  'French',
+]
+
+const setOfLanguages = new Set(languages)
+
+for (const language of setOfLanguages) {
+  console.log(language)
+}
+```
+
+```sh
+  English
+  Finnish
+  French
+  Spanish
+```
+
+### Adding an element to a set
+
+```js
+const companies = new Set() // creating an empty set
+console.log(companies.size) // 0
+
+companies.add('Google') // add element to the set
+companies.add('Facebook')
+companies.add('Amazon')
+companies.add('Oracle')
+companies.add('Microsoft')
+console.log(companies.size) // 5 elements in the set
+console.log(companies)
+```
+
+```sh
+Set(5) {"Google", "Facebook", "Amazon", "Oracle", "Microsoft"}
+```
+
+We can also use loop to add element to a set.
+
+```js
+const companies = ['Google', 'Facebook', 'Amazon', 'Oracle', 'Microsoft']
+setOfCompanies = new Set()
+for (const company of companies) {
+  setOfCompanies.add(company)
+}
+```
+
+```sh
+Set(5) {"Google", "Facebook", "Amazon", "Oracle", "Microsoft"}
+
+```
+
+### Deleting an element a set
+
+We can delete an element from a set using a delete method.
+
+```js
+console.log(companies.delete('Google'))
+console.log(companies.size) // 4 elements left in the set
+```
+
+### Checking an element in the set
+
+The has method can help to know if a certain element exists in a set.
+
+```js
+console.log(companies.has('Apple')) // false
+console.log(companies.has('Facebook')) // true
+```
+
+### Clearing the set
+
+It removes all the elements from a set.
+
+```js
+companies.clear()
+console.log(companies)
+```
+
+```sh
+Set(0) {}
+```
+
+See the example below to learn how to use set.
+
+```js
+const languages = [
+  'English',
+  'Finnish',
+  'English',
+  'French',
+  'Spanish',
+  'English',
+  'French',
+]
+const langSet = new Set(languages)
+console.log(langSet) // Set(4) {"English", "Finnish", "French", "Spanish"}
+console.log(langSet.size) // 4
+
+const counts = []
+const count = {}
+
+for (const l of langSet) {
+  const filteredLang = languages.filter((lng) => lng === l)
+  console.log(filteredLang) // ["English", "English", "English"]
+  counts.push({ lang: l, count: filteredLang.length })
+}
+console.log(counts)
+```
+
+```js
+[
+  { lang: 'English', count: 3 },
+  { lang: 'Finnish', count: 1 },
+  { lang: 'French', count: 2 },
+  { lang: 'Spanish', count: 1 },
+]
+```
+
+Other use case of set. For instance to count unique item in an array.
+
+```js
+const numbers = [5, 3, 2, 5, 5, 9, 4, 5]
+const setOfNumbers = new Set(numbers)
+
+console.log(setOfNumbers)
+```
+
+```sh
+Set(5) {5, 3, 2, 9, 4}
+```
+
+### Union of sets
+
+To find a union to two sets can be achieved using spread operator. Lets find the union of set A and set B (A U B)
+
+```js
+let a = [1, 2, 3, 4, 5]
+let b = [3, 4, 5, 6]
+let c = [...a, ...b]
+
+let A = new Set(a)
+let B = new Set(b)
+let C = new Set(c)
+
+console.log(C)
+```
+
+```sh
+Set(6) {1, 2, 3, 4, 5,6}
+```
+
+### Intersection of sets
+
+To find an intersection of two sets can be achieved using filter. Lets find the intersection of set A and set B (A ∩ B)
+
+```js
+let a = [1, 2, 3, 4, 5]
+let b = [3, 4, 5, 6]
+
+let A = new Set(a)
+let B = new Set(b)
+
+let c = a.filter((num) => B.has(num))
+let C = new Set(c)
+
+console.log(C)
+```
+
+```sh
+Set(3) {3, 4, 5}
+```
+
+### Difference of sets
+
+To find an the difference between two sets can be achieved using filter. Lets find the different of set A and set B (A \ B)
+
+```js
+let a = [1, 2, 3, 4, 5]
+let b = [3, 4, 5, 6]
+
+let A = new Set(a)
+let B = new Set(b)
+
+let c = a.filter((num) => !B.has(num))
+let C = new Set(c)
+
+console.log(C)
+```
+
+```sh
+Set(2) {1, 2}
+```
+
+## Map
+
+### Creating an empty Map
+
+```js
+const map = new Map()
+console.log(map)
+```
+
+```sh
+Map(0) {}
+```
+
+### Creating an Map from array
+
+```js
+countries = [
+  ['Finland', 'Helsinki'],
+  ['Sweden', 'Stockholm'],
+  ['Norway', 'Oslo'],
+]
+const map = new Map(countries)
+console.log(map)
+console.log(map.size)
+```
+
+```sh
+Map(3) {"Finland" => "Helsinki", "Sweden" => "Stockholm", "Norway" => "Oslo"}
+3
+```
+
+### Adding values to the Map
+
+```js
+const countriesMap = new Map()
+console.log(countriesMap.size) // 0
+countriesMap.set('Finland', 'Helsinki')
+countriesMap.set('Sweden', 'Stockholm')
+countriesMap.set('Norway', 'Oslo')
+console.log(countriesMap)
+console.log(countriesMap.size)
+```
+
+```sh
+Map(3) {"Finland" => "Helsinki", "Sweden" => "Stockholm", "Norway" => "Oslo"}
+3
+```
+
+### Getting a value from Map
+
+```js
+console.log(countriesMap.get('Finland'))
+```
+
+```sh
+Helsinki
+```
+
+### Checking key in Map
+
+Check if a key exists in a map using _has_ method. It returns _true_ or _false_.
+
+```js
+console.log(countriesMap.has('Finland'))
+```
+
+```sh
+true
+```
+
+Getting all values from map using loop
+
+```js
+for (const country of countriesMap) {
+  console.log(country)
+}
+```
+
+```sh
+(2) ["Finland", "Helsinki"]
+(2) ["Sweden", "Stockholm"]
+(2) ["Norway", "Oslo"]
+```
+
+```js
+for (const [country, city] of countriesMap){
+ console.log(country, city)
+}
+```
+
+```sh
+Finland Helsinki
+Sweden Stockholm
+Norway Oslo
+```
+
+
+
+<div align="center">
+  <h1> Destructuring and Spreading</h1>
+</div>
+
+- [Day 7](#day-7)
+
+# Day 7
+
+## Destructuring and Spread
+
+Destructuring is a way to unpack arrays, and objects and assigning to a distinct variable.
+
+### Destructing Arrays
+
+```js
+  const numbers = [1, 2, 3]
+  let [numOne, numTwo, numThree] = numbers
+
+  console.log(numOne, numTwo, numThree)
+```
+
+```sh
+  1 2 3
+```
+
+```js
+  const names = ['Asabeneh', 'Brook', 'David', 'John']
+  let [firstPerson, secondPerson, thirdPerson, fourthPerson] = names
+
+  console.log(firstPerson, secondPerson,thirdPerson, fourthPerson)
+```
+
+```sh
+Asabeneh Brook David John
+```
+
+```js
+  const scientificConstants = [2.72, 3.14, 9.81, 37, 100]
+  let [e, pi, gravity, bodyTemp, boilingTemp] = scientificConstants
+
+  console.log(e,pi,gravity, bodyTemp, boilingTemp)
+```
+
+```sh
+2.72 3.14 9.81 37 100
+```
+
+```js
+const fullStack = [
+  ['HTML', 'CSS', 'JS', 'React'],
+  ['Node', 'Express', 'MongoDB']
+]
+const [frontEnd, backEnd] = fullStack
+
+console.log(frontEnd)
+console.log(backEnd)
+```
+
+```sh
+["HTML", "CSS", "JS", "React"]
+["Node", "Express", "MongoDB"]
+```
+
+If we like to skip on of the values in the array we use additional comma. The comma helps to omit the value at that specific index
+
+```js
+  const numbers = [1, 2, 3]
+  let [numOne, , numThree] = numbers //2 is omitted
+
+  console.log(numOne, numThree)
+```
+
+```sh
+1 3
+```
+
+```js
+  const names = ['Asabeneh', 'Brook', 'David', 'John']
+  let [, secondPerson, , fourthPerson] = names // first and third person is omitted
+
+  console.log(secondPerson, fourthPerson)
+```
+
+```sh
+Brook John
+```
+
+We can use default value in case the value of array for that index is undefined:
+
+```js
+const names = [undefined, 'Brook', 'David']
+let [
+  firstPerson = 'Asabeneh',
+  secondPerson,
+  thirdPerson,
+  fourthPerson = 'John'
+] = names
+
+console.log(firstPerson, secondPerson, thirdPerson, fourthPerson)  
+```
+
+```sh
+Asabeneh Brook David John
+```
+
+We can not assign variable to all the elements in the array. We can destructure few of the first and we can get the remaining as array using spread operator(...).
+
+```js
+const nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+let [num1, num2, num3, ...rest] = nums
+
+console.log(num1, num2, num3)
+console.log(rest)
+```
+
+```sh
+1 2 3
+[4, 5, 6, 7, 8, 9, 10]
+```
+
+### Destructuring during iteration
+
+```js
+const countries = [['Finland', 'Helsinki'], ['Sweden', 'Stockholm'], ['Norway', 'Oslo']]
+
+for (const [country, city] of countries) {
+console.log(country, city)
+}
+```
+
+```sh
+Finland Helsinki
+Sweden Stockholm
+Norway Oslo
+```
+
+```js
+const fullStack = [
+  ['HTML', 'CSS', 'JS', 'React'],
+  ['Node', 'Express', 'MongoDB']
+]
+
+for(const [first, second, third] of fullStack) {
+console.log(first, second, third)
+}
+```
+
+```sh
+HTML CSS JS
+Node Express MongoDB
+```
+
+### Destructuring Object
+
+When we destructure the name of the variable we use to destructure should be exactly the same as the key or property of the object. See the example below.
+
+```js
+const rectangle = {
+  width: 20,
+  height: 10,
+  area: 200
+}
+let { width, height, area, perimeter } = rectangle
+
+console.log(width, height, area, perimeter)
+```
+
+```sh
+20 10 200 undefined
+```
+
+### Renaming during structuring
+
+```js
+const rectangle = {
+  width: 20,
+  height: 10,
+  area: 200
+}
+let { width: w, height: h, area: a, perimeter: p } = rectangle
+
+console.log(w, h, a, p)
+```
+
+```sh
+20 10 200 undefined
+```
+
+If the key is not found in the object the variable will be assigned to undefined. Sometimes the key might not be in the object, in that case we can give a default value during declaration. See the example.
+
+```js
+const rectangle = {
+  width: 20,
+  height: 10,
+  area: 200
+}
+let { width, height, area, perimeter = 60 } = rectangle
+
+console.log(width, height, area, perimeter) //20 10 200 60
+//Let us modify the object:width to 30 and perimeter to 80
+```
+
+```js
+const rectangle = {
+  width: 30,
+  height: 10,
+  area: 200,
+  perimeter: 80
+}
+let { width, height, area, perimeter = 60 } = rectangle
+console.log(width, height, area, perimeter) //30 10 200 80
+```
+
+Destructuring keys as a function parameters. Let us create a function which takes a rectangle object and it returns a perimeter of a rectangle.
+
+### Object parameter without destructuring
+
+```js
+// Without destructuring
+const rect = {
+  width: 20,
+  height: 10
+}
+const calculatePerimeter = rectangle => {
+  return 2 * (rectangle.width + rectangle.height)
+}
+
+console.log(calculatePerimeter(rect)) // 60
+//with destructuring
+```
+
+```js
+//Another Example
+const person = {
+  firstName: 'Asabeneh',
+  lastName: 'Yetayeh',
+  age: 250,
+  country: 'Finland',
+  job: 'Instructor and Developer',
+  skills: [
+    'HTML',
+    'CSS',
+    'JavaScript',
+    'React',
+    'Redux',
+    'Node',
+    'MongoDB',
+    'Python',
+    'D3.js'
+  ],
+  languages: ['Amharic', 'English', 'Suomi(Finnish)']
+}
+// Let us create a function which give information about the person object without destructuring
+
+const getPersonInfo = obj => {
+  const skills = obj.skills
+  const formattedSkills = skills.slice(0, -1).join(', ')
+  const languages = obj.languages
+  const formattedLanguages = languages.slice(0, -1).join(', ')
+
+  personInfo = `${obj.firstName} ${obj.lastName} lives in ${obj.country}. He is  ${
+    obj.age
+  } years old. He is an ${obj.job}. He teaches ${formattedSkills} and ${
+    skills[skills.length - 1]
+  }. He speaks ${formattedLanguages} and a little bit of ${languages[2]}.`
+
+  return personInfo
+}
+
+console.log(getPersonInfo(person))
+```
+
+### Object parameter with destructuring
+
+```js
+
+const calculatePerimeter = ({ width, height }) => {
+  return 2 * (width + height)
+}
+
+console.log(calculatePerimeter(rect)) // 60
+```
+
+```js
+// Let us create a function which give information about the person object with destructuring
+const getPersonInfo = ({
+  firstName,
+  lastName,
+  age,
+  country,
+  job,
+  skills,
+  languages
+}) => {
+  const formattedSkills = skills.slice(0, -1).join(', ')
+  const formattedLanguages = languages.slice(0, -1).join(', ')
+
+  personInfo = `${firstName} ${lastName} lives in ${country}. He is ${age} years old. He is an ${job}. He teaches ${formattedSkills} and ${
+    skills[skills.length - 1]
+  }. He speaks ${formattedLanguages} and a little bit of ${languages[2]}.`
+
+  return personInfo
+}
+console.log(getPersonInfo(person))
+/*
+Asabeneh Yetayeh lives in Finland. He is  250 years old. He is an Instructor and Developer. He teaches HTML, CSS, JavaScript, React, Redux, Node, MongoDB, Python and D3.js. He speaks Amharic, English and a little bit of Suomi(Finnish)
+*/
+```
+
+### Destructuring object during iteration
+
+```js
+const todoList = [
+{
+  task:'Prepare JS Test',
+  time:'4/1/2020 8:30',
+  completed:true
+},
+{
+  task:'Give JS Test',
+  time:'4/1/2020 10:00',
+  completed:false
+},
+{
+  task:'Assess Test Result',
+  time:'4/1/2020 1:00',
+  completed:false
+}
+]
+
+for (const {task, time, completed} of todoList){
+  console.log(task, time, completed)
+}
+```
+
+```sh
+Prepare JS Test 4/1/2020 8:30 true
+Give JS Test 4/1/2020 10:00 false
+Assess Test Result 4/1/2020 1:00 false
+```
+
+### Spread or Rest Operator
+
+When we destructure an array we use the spread operator(...) to get the rest elements as array. In addition to that we use spread operator to spread array elements to another array.
+
+### Spread operator to get the rest of array elements
+
+```js
+const nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+let [num1, num2, num3, ...rest] = nums
+​
+console.log(num1, num2, num3)
+console.log(rest)
+```
+
+```sh
+1 2 3
+[4, 5, 6, 7, 8, 9, 10]
+```
+
+```js
+const countries = [
+  'Germany',
+  'France',
+  'Belgium',
+  'Finland',
+  'Sweden',
+  'Norway',
+  'Denmark',
+  'Iceland'
+]
+
+let [gem, fra, , ...nordicCountries] = countries
+
+console.log(gem)
+console.log(fra)
+console.log(nordicCountries)
+```
+
+```sh
+Germany
+France
+["Finland", "Sweden", "Norway", "Denmark", "Iceland"]
+```
+
+### Spread operator to copy array
+
+```js
+const evens = [0, 2, 4, 6, 8, 10]
+const evenNumbers = [...evens]
+
+const odds = [1, 3, 5, 7, 9]
+const oddNumbers = [...odds]
+
+const wholeNumbers = [...evens, ...odds]
+
+console.log(evenNumbers)
+console.log(oddNumbers)
+console.log(wholeNumbers)
+
+
+```
+
+```sh
+[0, 2, 4, 6, 8, 10]
+[1, 3, 5, 7, 9]
+[0, 2, 4, 6, 8, 10, 1, 3, 5, 7, 9]
+```
+
+```js
+const frontEnd = ['HTML', 'CSS', 'JS', 'React']
+const backEnd = ['Node', 'Express', 'MongoDB']
+const fullStack = [...frontEnd, ...backEnd]
+
+console.log(fullStack)
+```
+
+```sh
+["HTML", "CSS", "JS", "React", "Node", "Express", "MongoDB"]
+```
+
+### Spread operator to copy object
+
+We can copy an object using a spread operator
+
+```js
+const user = {
+  name:'Asabeneh',
+  title:'Programmer',
+  country:'Finland',
+  city:'Helsinki'
+}
+
+const copiedUser = {...user}
+console.log(copiedUser)
+```
+
+```sh
+{name: "Asabeneh", title: "Programmer", country: "Finland", city: "Helsinki"}
+```
+
+Modifying or changing the object while copying
+
+```js
+const user = {
+  name:'Asabeneh',
+  title:'Programmer',
+  country:'Finland',
+  city:'Helsinki'
+}
+
+const copiedUser = {...user, title:'instructor'}
+console.log(copiedUser)
+```
+
+```sh
+{name: "Asabeneh", title: "instructor", country: "Finland", city: "Helsinki"}
+```
+
+#### Spread operator with arrow function
+
+Whenever we like to write an arrow function which takes unlimited number of arguments we use a spread operator. If we use a spread operator as a parameter, the argument passed when we invoke a function will change to an array.
+
+```js
+
+const sumAllNums = (...args) => {
+  console.log(args)
+}
+
+sumAllNums(1, 2, 3, 4, 5)
+
+```
+
+```sh
+[1, 2, 3, 4, 5]
+
+```
+
+```js
+
+const sumAllNums = (...args) => {
+  let sum = 0
+  for (const num of args){
+    sum += num
+  }
+  return sum
+  
+}
+
+console.log(sumAllNums(1, 2, 3, 4, 5))
+```
+
+```sh
+15
+
+```
+
+
+<div align="center">
+  <h1>Classes</h1>
+</div>
+
+- [Day 8]
+
+# Day 8
+
+## Classes
+
+
+### Defining a classes
+
+
+```sh
+// syntax
+class ClassName {
+    //  code goes here
+}
+
+```
+
+**Example:**
+
+```js
+class Person {
+  // code goes here
+}
+```
+
+We have created an Person class but it does not have any thing inside.
+
+### Class Instantiation
+
+Instantiation class means creating an object from a class. We need the keyword _new_ and we call the name of the class after the word new.
+
+Let us create a dog object from our Person class.
+
+```js
+class Person {
+  // code goes here
+}
+const person = new Person()
+console.log(person)
+```
+
+```sh
+Person {}
+```
+
+As you can see, we have created a person object. Since the class did not have any properties yet the object is also empty.
+
+Let use the class constructor to pass different properties for the class.
+
+### Class Constructor
+
+The constructor is a builtin function which allows as to create a blueprint for our object. The constructor function starts with a keyword constructor followed by a parenthesis. Inside the parenthesis we pass the properties of the object as parameter. We use the _this_ keyword to attach the constructor parameters with the class.
+
+The following Person class constructor has firstName and lastName property. These properties are attached to the Person class using _this_ keyword. _This_ refers to the class itself.
+
+```js
+class Person {
+  constructor(firstName, lastName) {
+    console.log(this) // Check the output from here
+    this.firstName = firstName
+    this.lastName = lastName
+  }
+}
+
+const person = new Person()
+
+console.log(person)
+```
+
+```sh
+Person {firstName: undefined, lastName:undefined}
+```
+
+All the keys of the object are undefined. When ever we instantiate we should pass the value of the properties. Let us pass value at this time when we instantiate the class.
+
+```js
+class Person {
+  constructor(firstName, lastName) {
+    this.firstName = firstName
+    this.lastName = lastName
+  }
+}
+
+const person1 = new Person('Asabeneh', 'Yetayeh')
+
+console.log(person1)
+```
+
+```sh
+Person {firstName: "Asabeneh", lastName: "Yetayeh"}
+```
+
+As we have stated at the very beginning that once we create a class we can create many object using the class. Now, let us create many person objects using the Person class.
+
+```js
+class Person {
+  constructor(firstName, lastName) {
+    console.log(this) // Check the output from here
+    this.firstName = firstName
+    this.lastName = lastName
+  }
+}
+
+const person1 = new Person('Asabeneh', 'Yetayeh')
+const person2 = new Person('Lidiya', 'Tekle')
+const person3 = new Person('Abraham', 'Yetayeh')
+
+console.log(person1)
+console.log(person2)
+console.log(person3)
+```
+
+```sh
+Person {firstName: "Asabeneh", lastName: "Yetayeh"}
+Person {firstName: "Lidiya", lastName: "Tekle"}
+Person {firstName: "Abraham", lastName: "Yetayeh"}
+```
+
+Using the class Person we created three persons object. As you can see our class did not many properties let us add more properties to the class.
+
+```js
+class Person {
+  constructor(firstName, lastName, age, country, city) {
+    console.log(this) // Check the output from here
+    this.firstName = firstName
+    this.lastName = lastName
+    this.age = age
+    this.country = country
+    this.city = city
+  }
+}
+
+const person1 = new Person('Asabeneh', 'Yetayeh', 250, 'Finland', 'Helsinki')
+
+console.log(person1)
+```
+
+```sh
+Person {firstName: "Asabeneh", lastName: "Yetayeh", age: 250, country: "Finland", city: "Helsinki"}
+```
+
+### Default values with constructor
+
+The constructor function properties may have a default value like other regular functions.
+
+```js
+class Person {
+  constructor(
+    firstName = 'Asabeneh',
+    lastName = 'Yetayeh',
+    age = 250,
+    country = 'Finland',
+    city = 'Helsinki'
+  ) {
+    this.firstName = firstName
+    this.lastName = lastName
+    this.age = age
+    this.country = country
+    this.city = city
+  }
+}
+
+const person1 = new Person() // it will take the default values
+const person2 = new Person('Lidiya', 'Tekle', 28, 'Finland', 'Espoo')
+
+console.log(person1)
+console.log(person2)
+```
+
+```sh
+Person {firstName: "Asabeneh", lastName: "Yetayeh", age: 250, country: "Finland", city: "Helsinki"}
+Person {firstName: "Lidiya", lastName: "Tekle", age: 28, country: "Finland", city: "Espoo"}
+```
+
+### Class methods
+
+The constructor inside a class is a builtin function which allow us to create a blueprint for the object. In a class we can create class methods. Methods are JavaScript functions inside the class. Let us create some class methods.
+
+```js
+class Person {
+  constructor(firstName, lastName, age, country, city) {
+    this.firstName = firstName
+    this.lastName = lastName
+    this.age = age
+    this.country = country
+    this.city = city
+  }
+  getFullName() {
+    const fullName = this.firstName + ' ' + this.lastName
+    return fullName
+  }
+}
+
+const person1 = new Person('Asabeneh', 'Yetayeh', 250, 'Finland', 'Helsinki')
+const person2 = new Person('Lidiya', 'Tekle', 28, 'Finland', 'Espoo')
+
+console.log(person1.getFullName())
+console.log(person2.getFullName())
+```
+
+```sh
+Asabeneh Yetayeh
+test.js:19 Lidiya Tekle
+```
+
+### Properties with initial value
+
+When we create a class for some properties we may have an initial value. For instance if you are playing a game, you starting score will be zero. So, we may have a starting score or score which is zero. In other way, we may have an initial skill and we will acquire some skill after some time.
+
+```js
+class Person {
+  constructor(firstName, lastName, age, country, city) {
+    this.firstName = firstName
+    this.lastName = lastName
+    this.age = age
+    this.country = country
+    this.city = city
+    this.score = 0
+    this.skills = []
+  }
+  getFullName() {
+    const fullName = this.firstName + ' ' + this.lastName
+    return fullName
+  }
+}
+
+const person1 = new Person('Asabeneh', 'Yetayeh', 250, 'Finland', 'Helsinki')
+const person2 = new Person('Lidiya', 'Tekle', 28, 'Finland', 'Espoo')
+
+console.log(person1.score)
+console.log(person2.score)
+
+console.log(person1.skills)
+console.log(person2.skills)
+```
+
+```sh
+0
+0
+[]
+[]
+```
+
+A method could be regular method or a getter or a setter. Let us see, getter and setter.
+
+### getter
+
+The get method allow us to access value from the object. We write a get method using keyword _get_ followed by a function. Instead of accessing properties directly from the object we use getter to get the value. See the example bellow
+
+```js
+class Person {
+  constructor(firstName, lastName, age, country, city) {
+    this.firstName = firstName
+    this.lastName = lastName
+    this.age = age
+    this.country = country
+    this.city = city
+    this.score = 0
+    this.skills = []
+  }
+  getFullName() {
+    const fullName = this.firstName + ' ' + this.lastName
+    return fullName
+  }
+  get getScore() {
+    return this.score
+  }
+  get getSkills() {
+    return this.skills
+  }
+}
+
+const person1 = new Person('Asabeneh', 'Yetayeh', 250, 'Finland', 'Helsinki')
+const person2 = new Person('Lidiya', 'Tekle', 28, 'Finland', 'Espoo')
+
+console.log(person1.getScore) // We do not need parenthesis to call a getter method
+console.log(person2.getScore)
+
+console.log(person1.getSkills)
+console.log(person2.getSkills)
+```
+
+```sh
+0
+0
+[]
+[]
+```
+
+### setter
+
+The setter method allow us to modify the value of certain properties. We write a setter method using keyword _set_ followed by a function. See the example bellow.
+
+```js
+class Person {
+  constructor(firstName, lastName, age, country, city) {
+    this.firstName = firstName
+    this.lastName = lastName
+    this.age = age
+    this.country = country
+    this.city = city
+    this.score = 0
+    this.skills = []
+  }
+  getFullName() {
+    const fullName = this.firstName + ' ' + this.lastName
+    return fullName
+  }
+  get getScore() {
+    return this.score
+  }
+  get getSkills() {
+    return this.skills
+  }
+  set setScore(score) {
+    this.score += score
+  }
+  set setSkill(skill) {
+    this.skills.push(skill)
+  }
+}
+
+const person1 = new Person('Asabeneh', 'Yetayeh', 250, 'Finland', 'Helsinki')
+const person2 = new Person('Lidiya', 'Tekle', 28, 'Finland', 'Espoo')
+
+person1.setScore = 1
+person1.setSkill = 'HTML'
+person1.setSkill = 'CSS'
+person1.setSkill = 'JavaScript'
+
+person2.setScore = 1
+person2.setSkill = 'Planning'
+person2.setSkill = 'Managing'
+person2.setSkill = 'Organizing'
+
+console.log(person1.score)
+console.log(person2.score)
+
+console.log(person1.skills)
+console.log(person2.skills)
+```
+
+```sh
+1
+1
+["HTML", "CSS", "JavaScript"]
+["Planning", "Managing", "Organizing"]
+```
+
+Do not be puzzled by the difference between regular method and a getter. If you know how to make a regular method you are good. Let us add regular method called getPersonInfo in the Person class.
+
+```js
+class Person {
+  constructor(firstName, lastName, age, country, city) {
+    this.firstName = firstName
+    this.lastName = lastName
+    this.age = age
+    this.country = country
+    this.city = city
+    this.score = 0
+    this.skills = []
+  }
+  getFullName() {
+    const fullName = this.firstName + ' ' + this.lastName
+    return fullName
+  }
+  get getScore() {
+    return this.score
+  }
+  get getSkills() {
+    return this.skills
+  }
+  set setScore(score) {
+    this.score += score
+  }
+  set setSkill(skill) {
+    this.skills.push(skill)
+  }
+  getPersonInfo() {
+    let fullName = this.getFullName()
+    let skills =
+      this.skills.length > 0 &&
+      this.skills.slice(0, this.skills.length - 1).join(', ') +
+        ` and ${this.skills[this.skills.length - 1]}`
+    let formattedSkills = skills ? `He knows ${skills}` : ''
+
+    let info = `${fullName} is ${this.age}. He lives ${this.city}, ${this.country}. ${formattedSkills}`
+    return info
+  }
+}
+
+const person1 = new Person('Asabeneh', 'Yetayeh', 250, 'Finland', 'Helsinki')
+const person2 = new Person('Lidiya', 'Tekle', 28, 'Finland', 'Espoo')
+const person3 = new Person('John', 'Doe', 50, 'Mars', 'Mars city')
+
+person1.setScore = 1
+person1.setSkill = 'HTML'
+person1.setSkill = 'CSS'
+person1.setSkill = 'JavaScript'
+
+person2.setScore = 1
+person2.setSkill = 'Planning'
+person2.setSkill = 'Managing'
+person2.setSkill = 'Organizing'
+
+console.log(person1.getScore)
+console.log(person2.getScore)
+
+console.log(person1.getSkills)
+console.log(person2.getSkills)
+console.log(person3.getSkills)
+
+console.log(person1.getPersonInfo())
+console.log(person2.getPersonInfo())
+console.log(person3.getPersonInfo())
+```
+
+```sh
+1
+1
+["HTML", "CSS", "JavaScript"]
+["Planning", "Managing", "Organizing"]
+[]
+Asabeneh Yetayeh is 250. He lives Helsinki, Finland. He knows HTML, CSS and JavaScript
+Lidiya Tekle is 28. He lives Espoo, Finland. He knows Planning, Managing and Organizing
+John Doe is 50. He lives Mars city, Mars.
+```
+
+### Static method
+
+The static keyword defines a static method for a class. Static methods are not called on instances of the class. Instead, they are called on the class itself. These are often utility functions, such as functions to create or clone objects. An example of static method is _Date.now()_. The _now_ method is called directly from the class.
+
+```js
+class Person {
+  constructor(firstName, lastName, age, country, city) {
+    this.firstName = firstName
+    this.lastName = lastName
+    this.age = age
+    this.country = country
+    this.city = city
+    this.score = 0
+    this.skills = []
+  }
+  getFullName() {
+    const fullName = this.firstName + ' ' + this.lastName
+    return fullName
+  }
+  get getScore() {
+    return this.score
+  }
+  get getSkills() {
+    return this.skills
+  }
+  set setScore(score) {
+    this.score += score
+  }
+  set setSkill(skill) {
+    this.skills.push(skill)
+  }
+  getPersonInfo() {
+    let fullName = this.getFullName()
+    let skills =
+      this.skills.length > 0 &&
+      this.skills.slice(0, this.skills.length - 1).join(', ') +
+        ` and ${this.skills[this.skills.length - 1]}`
+
+    let formattedSkills = skills ? `He knows ${skills}` : ''
+
+    let info = `${fullName} is ${this.age}. He lives ${this.city}, ${this.country}. ${formattedSkills}`
+    return info
+  }
+  static favoriteSkill() {
+    const skills = ['HTML', 'CSS', 'JS', 'React', 'Python', 'Node']
+    const index = Math.floor(Math.random() * skills.length)
+    return skills[index]
+  }
+  static showDateTime() {
+    let now = new Date()
+    let year = now.getFullYear()
+    let month = now.getMonth() + 1
+    let date = now.getDate()
+    let hours = now.getHours()
+    let minutes = now.getMinutes()
+    if (hours < 10) {
+      hours = '0' + hours
+    }
+    if (minutes < 10) {
+      minutes = '0' + minutes
+    }
+
+    let dateMonthYear = date + '.' + month + '.' + year
+    let time = hours + ':' + minutes
+    let fullTime = dateMonthYear + ' ' + time
+    return fullTime
+  }
+}
+
+console.log(Person.favoriteSkill())
+console.log(Person.showDateTime())
+```
+
+```sh
+Node
+15.1.2020 23:56
+```
+
+The static methods are methods which can be used as utility functions.
+
+## Inheritance
+
+Using inheritance we can access all the properties and the methods of the parent class. This reduces repetition of code. If you remember, we have a Person parent class and we will create children from it. Our children class could be student, teach etc.
+
+```js
+// syntax
+class ChildClassName extends {
+ // code goes here
+}
+```
+
+Let us create a Student child class from Person parent class.
+
+```js
+class Student extends Person {
+  saySomething() {
+    console.log('I am a child of the person class')
+  }
+}
+
+const s1 = new Student('Asabeneh', 'Yetayeh', 'Finland', 250, 'Helsinki')
+console.log(s1)
+console.log(s1.saySomething())
+console.log(s1.getFullName())
+console.log(s1.getPersonInfo())
+```
+
+```sh
+Student {firstName: "Asabeneh", lastName: "Yetayeh", age: "Finland", country: 250, city: "Helsinki", …}
+I am a child of the person class
+Asabeneh Yetayeh
+Student {firstName: "Asabeneh", lastName: "Yetayeh", age: "Finland", country: 250, city: "Helsinki", …}
+Asabeneh Yetayeh is Finland. He lives Helsinki, 250.
+```
+
+### Overriding methods
+
+As you can see, we manage to access all the methods in the Person Class and we used it in the Student child class. We can customize the parent methods, we can add additional properties to a child class. If we want to customize, the methods and if we want to add extra properties, we need to use the constructor function the child class too. Inside the constructor function we call the super() function to access all the properties from the parent class. The Person class didn't have gender but now let us give gender property for the child class, Student. If the same method name used in the child class, the parent method will be overridden.
+
+```js
+class Student extends Person {
+  constructor(firstName, lastName, age, country, city, gender) {
+    super(firstName, lastName, age, country, city)
+    this.gender = gender
+  }
+
+  saySomething() {
+    console.log('I am a child of the person class')
+  }
+  getPersonInfo() {
+    let fullName = this.getFullName()
+    let skills =
+      this.skills.length > 0 &&
+      this.skills.slice(0, this.skills.length - 1).join(', ') +
+        ` and ${this.skills[this.skills.length - 1]}`
+
+    let formattedSkills = skills ? `He knows ${skills}` : ''
+    let pronoun = this.gender == 'Male' ? 'He' : 'She'
+
+    let info = `${fullName} is ${this.age}. ${pronoun} lives in ${this.city}, ${this.country}. ${formattedSkills}`
+    return info
+  }
+}
+
+const s1 = new Student(
+  'Asabeneh',
+  'Yetayeh',
+  250,
+  'Finland',
+  'Helsinki',
+  'Male'
+)
+const s2 = new Student('Lidiya', 'Tekle', 28, 'Finland', 'Helsinki', 'Female')
+s1.setScore = 1
+s1.setSkill = 'HTML'
+s1.setSkill = 'CSS'
+s1.setSkill = 'JavaScript'
+
+s2.setScore = 1
+s2.setSkill = 'Planning'
+s2.setSkill = 'Managing'
+s2.setSkill = 'Organizing'
+
+console.log(s1)
+
+console.log(s1.saySomething())
+console.log(s1.getFullName())
+console.log(s1.getPersonInfo())
+
+console.log(s2.saySomething())
+console.log(s2.getFullName())
+console.log(s2.getPersonInfo())
+```
+
+```sh
+Student {firstName: "Asabeneh", lastName: "Yetayeh", age: 250, country: "Finland", city: "Helsinki", …}
+Student {firstName: "Lidiya", lastName: "Tekle", age: 28, country: "Finland", city: "Helsinki", …}
+I am a child of the person class
+Asabeneh Yetayeh
+Student {firstName: "Asabeneh", lastName: "Yetayeh", age: 250, country: "Finland", city: "Helsinki", …}
+Asabeneh Yetayeh is 250. He lives in Helsinki, Finland. He knows HTML, CSS and JavaScript
+I am a child of the person class
+Lidiya Tekle
+Student {firstName: "Lidiya", lastName: "Tekle", age: 28, country: "Finland", city: "Helsinki", …}
+Lidiya Tekle is 28. She lives in Helsinki, Finland. He knows Planning, Managing and Organizing
+```
+
+Now, the getPersonInfo method has been overridden and it identifies if the person is male or female.
